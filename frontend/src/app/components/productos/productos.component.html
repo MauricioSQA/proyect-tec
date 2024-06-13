@@ -1,0 +1,150 @@
+<!-- Form -->
+<div
+  class="container mt-5 mb-5 d-flex justify-content-center"
+  data-aos="fade-right"
+  data-aos-duration="1000"
+>
+  <div class="col-md-4">
+    <form (ngSubmit)="onCreate()">
+      <h2 class="mb-4 text-center">
+        {{ id > 0 ? "Actualize" : "Inscriba" }} sus Productos
+      </h2>
+      <div class="form-group">
+        <label for="nombreProducto">Nombre de los Productos</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nombre"
+          placeholder="Ingrese el nombre de los productos"
+          [(ngModel)]="Productos.nombre"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <div class="form-group mt-4">
+        <label for="descripcion">Descripción</label>
+        <input
+          type="text"
+          class="form-control"
+          id="descripcion"
+          placeholder="Ingrese la descripcion de su producto"
+          [(ngModel)]="Productos.descripcion"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <div class="form-group mt-4">
+        <label for="Precio Original">Precio Original</label>
+        <input
+          type="text"
+          class="form-control"
+          id="precioOriginal"
+          placeholder="Ingrese el precio original"
+          [(ngModel)]="Productos.precioOriginal"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <div class="form-group mt-4">
+        <label for="Precio Oferta">Precio Oferta</label>
+        <input
+          type="text"
+          class="form-control"
+          id="precioOferta"
+          placeholder="Ingrese el precio Oferta del producto"
+          [(ngModel)]="Productos.precioOferta"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <div class="form-group mt-4">
+        <label for="disponibilidad">Disponibilidad</label>
+        <input
+          type="text"
+          class="form-control"
+          id="disponibilidad"
+          placeholder="Ingrese la disponibilidad del producto"
+          [(ngModel)]="Productos.cant_disponible"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      
+      <button
+        type="submit"
+        class="btn btn-outline-primary mt-4 w-100"
+        *ngIf="id === 0"
+      >
+        Regístrate
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-primary mt-4 w-100"
+        *ngIf="id > 0"
+        (click)="update(id, Productos)"
+        [routerLink]="['/productos']"
+
+      >
+        Actualizar
+      </button>
+    </form>
+  </div>
+</div>
+
+<div class="container mb-5">
+  <!-- Table -->
+  <table class="table table-hover align-middle mb-0 bg-white">
+    <thead class="bg-light">
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Precio Original</th>
+        <th>Precio Oferta</th>
+        <th>Disponibilidad</th>
+        <th>Accion</th>
+        <th>Accion</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let producto of productos">
+      <tr>
+        <td>
+          <div class="d-flex align-items-center">
+            <img
+              src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1178&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt=""
+              style="width: 45px; height: 45px"
+              class="rounded-circle"
+            />
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{ producto.nombre }}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">{{producto.descripcion }}</p>
+        </td>
+        <td>
+          <p class="badge bg-warning text-dark mb-1">{{ producto.precioOriginal}}</p>
+        </td>
+        <td>
+          <p class="badge bg-warning text-dark mb-1">{{ producto.precioOferta}}</p>
+        </td>
+        <td>
+          <p class="badge bg-warning text-dark mb-1">{{ producto.cant_disponible}}</p>
+        </td>
+        <td>
+          <button
+            class="btn btn-outline-danger btn-sm mb-1"
+            (click)="onDelete(producto.id!)"
+          >
+            Eliminar
+          </button>
+        </td>
+        <td>
+          <button
+            class="btn btn-outline-info btn-sm"
+            [routerLink]="['/productos/edit/', producto.id]"
+          >
+            Actualizar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

@@ -1,0 +1,67 @@
+
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+      <form action="https://formbold.com/s/FORM_ID" method="POST" >
+          <div class="formbold-input-flex">
+            <div>
+                <input
+                type="text"
+                name="nombre"
+                id="nombre"
+                placeholder="Tus Nombres"
+                class="formbold-form-input"
+                required
+                (input)="onInput($event)"
+                />
+                <label for="nombre" class="formbold-form-label"> Nombres </label>
+            </div>
+  
+            <div>
+              <input
+              type="email"
+              name="correo"
+              id="correo"
+              placeholder="Tu Correo"
+              class="formbold-form-input"
+              required
+              (input)="onInput($event)"
+              />
+              <label for="correo" class="formbold-form-label">Correo </label>
+          </div>  
+          </div>
+            <div>
+              <label for="asunto" class="formbold-form-label"> Asunto </label>
+                <input
+                type="text"
+                name="asunto"
+                id="asunto"
+                placeholder="Asunto"
+                required
+                class="formbold-form-input"
+                (input)="onInput($event)"
+                />
+                
+            </div>
+         
+  
+          <div class="formbold-textarea formbold-input-file">
+              <textarea
+                  rows="6"
+                  name="mensaje"
+                  id="mensaje"
+                  placeholder="Tu Mensaje"
+                  class="formbold-form-input"
+                  (input)="onInput($event)"
+                  required
+              ></textarea>
+              <label for="mensaje" class="formbold-form-label"> Mensaje </label>
+          </div>
+          <button  class="formbold-btn" type="button" (click)="preview($event);">Enviar Mensaje</button>
+      </form>
+    </div>
+  </div>
+
+  
+  
+  
+  
